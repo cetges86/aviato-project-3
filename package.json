@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "heroku-prebuild":"rm -rf public/ && mkdir public",
-    "heroku-postbuild":"cd client && npm i && npm run build",
+    "heroku-prebuild": "rm -rf public/ && mkdir public",
+    "heroku-postbuild": "cd client && npm i && npm run build",
     "start": "node app.js",
-    "dev":"concurrently \"node app.js\" \"cd client && yarn start\""
+    "dev": "concurrently \"node app.js\" \"cd client && yarn start\""
   },
   "dependencies": {
+    "bulma": "^0.7.1",
     "concurrently": "^3.6.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",

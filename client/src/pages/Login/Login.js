@@ -22,9 +22,6 @@ class Login extends Component {
                                     <span className="icon is-small is-left">
                                         <i className="fas fa-envelope"></i>
                                     </span>
-                                    <span className="icon is-small is-right">
-                                        <i className="fas fa-check"></i>
-                                    </span>
                                 </p>
                             </div>
                             <div className="field">
@@ -35,7 +32,9 @@ class Login extends Component {
                                     </span>
                                 </p>
                             </div>
-                            <input className="button is-rounded is-primary" type="submit" value="Submit" />
+                            <div className="field">
+                                <input className="button is-rounded is-primary" type="submit" value="Login" />
+                            </div>
                         </div>
                     </div>
                 </div>

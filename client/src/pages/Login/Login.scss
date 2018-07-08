@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
-
+$blue:#0894bb;
 
 #loginDiv {
     margin-top: 15%;
-    border:none;
+    border:$blue;
     font-family: 'Josefin Sans', sans-serif;
 }
 

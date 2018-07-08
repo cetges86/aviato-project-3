@@ -16,7 +16,7 @@ const Nav = () => (
             </div>
             <div className="navbar-end">
                 <a className="navbar-item">
-                    Login
+                    Sign Up
                     </a>
             </div>
         </div>

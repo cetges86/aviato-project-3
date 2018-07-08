@@ -11,6 +11,7 @@
 
 // 2. Set your own initial variables
 // Update the blue shade, used for links
+$mainFont: 'Josefin Sans'!important;
 $blue: #0894bb;
 // Add pink and its invert
 $teal: #80f0ff;
@@ -21,9 +22,13 @@ $pink-invert: #fff;
 // 3. Set the derived variables
 // Use the new pink as the primary color
 $primary: $blue;
+$secondary: $teal;
 $primary-invert: $pink-invert;
 
-// 4. Import the rest of Bulma
+body {
+    font-family: $mainFont;
+}
 
+// 4. Import the rest of Bulma
 
 @import "../node_modules/bulma/bulma";

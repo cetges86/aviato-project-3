@@ -7,7 +7,7 @@ class SignUp extends Component {
 
     state = {
         fileLabel: "Choose a profile photo...",
-        imgSrc:"https://bulma.io/images/placeholders/128x128.png"
+        imgSrc: "https://bulma.io/images/placeholders/128x128.png"
     }
 
     getFileName = () => {
@@ -115,9 +115,14 @@ class SignUp extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                    <label class="checkbox">
+                                        <input type="checkbox"/>
+                                        &nbsp; Are you currently looking for jobs? 
+                                    </label>
+                                    <br />
+                                    <input class="button is-primary" type="submit" value="Submit" />
+                            </div> 
                         </div>
-
                     </div>
                 </div>
             </div>

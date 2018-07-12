@@ -7,7 +7,13 @@ class SignUp extends Component {
 
     state = {
         fileLabel: "Choose a profile photo...",
-        imgSrc: "https://bulma.io/images/placeholders/128x128.png"
+        imgSrc: "https://bulma.io/images/placeholders/128x128.png",
+        name: "",
+        address: "",
+        password: "",
+        lang: "",
+        job: "",
+        looking: false
     }
 
     getFileName = () => {
@@ -19,6 +25,32 @@ class SignUp extends Component {
             }
         };
         this.setState({ fileLabel: "Select a different photo" })
+    }
+
+    handleSubmit = () => {
+        let newUser = {
+            photo: this.state.imgSrc,
+            name: this.state.name,
+            address: this.state.address,
+            password: this.state.password,
+            lang: this.state.lang,
+            job: this.state.job,
+            looking: this.state.looking
+        };
+
+        console.log(newUser);
+
+        //input verification
+        for (var prop in newUser) {
+            if (newUser[prop] === "") {
+                console.log(`Form element ${prop} not completed`)
+            } else {
+                console.log(`Form element ${prop} complete with "${newUser[prop]}"`)
+            }
+        }
+
+        //trigger a post using mongoose to database adding new user data
+
     }
 
     render() {
@@ -59,7 +91,8 @@ class SignUp extends Component {
                                 <div className="field">
                                     <label className="label">Name</label>
                                     <div className="control has-icons-left">
-                                        <input className="input is-primary" type="text" placeholder="Name" />
+                                        <input className="input is-primary" type="text" placeholder="Name"
+                                            onChange={event => this.setState({ name: event.target.value })} />
                                         <span className="icon is-small is-left">
                                             <i className="fas fa-user"></i>
                                         </span>
@@ -69,7 +102,8 @@ class SignUp extends Component {
                                 <div className="field">
                                     <label className="label">E-mail</label>
                                     <div className="control has-icons-left">
-                                        <input className="input is-primary" type="email" placeholder="e.g. person@email.com" />
+                                        <input className="input is-primary" type="email" placeholder="e.g. person@email.com"
+                                            onChange={event => this.setState({ address: event.target.value })} />
                                         <span className="icon is-small is-left">
                                             <i className="fas fa-envelope"></i>
                                         </span>
@@ -78,7 +112,8 @@ class SignUp extends Component {
                                 <div className="field">
                                     <label className="label">Password</label>
                                     <div className="control has-icons-left">
-                                        <input className="input is-primary" type="password" placeholder="Type Password" />
+                                        <input className="input is-primary" type="password" placeholder="Type Password"
+                                            onChange={event => this.setState({ password: event.target.value })} />
                                         <span className="icon is-small is-left">
                                             <i className="fas fa-lock"></i>
                                         </span>
@@ -90,14 +125,13 @@ class SignUp extends Component {
                                         <label className="label">Programming Language</label>
                                         <div className="control has-icons-left">
                                             <div className="select is-rounded">
-                                                <select>
+                                                <select onChange={event => this.setState({ lang: event.target.value })}>
                                                     <option defaultValue="true">Primary Language</option>
                                                     <option>JavaScript</option>
                                                     <option>PHP</option>
                                                     <option>C/C++/C#</option>
                                                     <option>Python</option>
                                                     <option>Java</option>
-
                                                 </select>
                                             </div>
                                             <span className="icon is-left">
@@ -108,20 +142,21 @@ class SignUp extends Component {
                                     <div className="column is-half">
                                         <label className="label">Desired Job</label>
                                         <div className="control has-icons-left">
-                                            <input className="input is-primary" type="text" placeholder="Job Title" />
+                                            <input className="input is-primary" type="text" placeholder="Job Title"
+                                                onChange={event => this.setState({ job: event.target.value })} />
                                             <span className="icon is-small is-left">
                                                 <i className="fas fa-briefcase"></i>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
-                                    <label class="checkbox">
-                                        <input type="checkbox"/>
-                                        &nbsp; Are you currently looking for jobs? 
+                                <label className="checkbox">
+                                    <input type="checkbox" onChange={event => this.setState({ looking: !this.state.looking })} />
+                                    &nbsp; Are you currently looking for jobs?
                                     </label>
-                                    <br />
-                                    <input class="button is-primary" type="submit" value="Submit" />
-                            </div> 
+                                <br />
+                                <input className="button is-primary" type="submit" value="Submit" onClick={this.handleSubmit} />
+                            </div>
                         </div>
                     </div>
                 </div>

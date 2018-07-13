@@ -1,22 +1,23 @@
 import React from "react";
+import logo from "../img/logo.png";
 
 const Nav = () => (
     // eslint-disable-next-line
     <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-            <a className="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28" />
+            <a className="navbar-item" href="/">
+                <img src={logo} alt="Yearbook() Logo" width="112" height="28" />
             </a>
         </div>
         <div className="navbar-menu">
             <div className="navbar-start">
-                <a className="navbar-item">
+                <a className="navbar-item" href="/signup">
                     Sign Up
                 </a>
             </div>
             <div className="navbar-end">
                 <a className="navbar-item">
-                    Login
+                    About
                     </a>
             </div>
         </div>

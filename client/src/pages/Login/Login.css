@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
 #loginDiv {
   margin-top: 15%;
-  border: none;
+  border: #0894bb;
   font-family: 'Josefin Sans', sans-serif; }
 
 .card {

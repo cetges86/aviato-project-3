@@ -47,4 +47,4 @@ class Welcome extends Component {
 
 }
 
-export default Login;
+export default Welcome;

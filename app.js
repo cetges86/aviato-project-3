@@ -3,13 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
 var app = express();
+
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/yearbook_users";
+mongoose.connect(MONGODB_URI);
+mongoose.Promise = Promise;
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client', 'build')));
   app.get("*", (req, res) => {

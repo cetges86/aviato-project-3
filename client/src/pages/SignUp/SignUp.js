@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import logo from "../../img/logo.png";
+import API from "../../util/API.js";
 import "./SignUp.css";
 
 
@@ -50,7 +51,7 @@ class SignUp extends Component {
         }
 
         //trigger a post using mongoose to database adding new user data
-
+        //API.saveUser
     }
 
     render() {

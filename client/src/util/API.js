@@ -2,13 +2,13 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getUsers: function() {
+  getAllUsers: function() {
     return axios.get("/api/users");
   },
   getUser: function(id) {
     return axios.get("/api/users/" + id);
   },
-  saveUser: function(userData) {
+  createUser: function(userData) {
     return axios.post("/api/users", userData);
   }
 //   // Gets the book with the given id

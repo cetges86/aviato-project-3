@@ -51,7 +51,7 @@ class SignUp extends Component {
         }
 
         //trigger a post using mongoose to database adding new user data
-        //API.saveUser
+        //API.createUser
     }
 
     render() {

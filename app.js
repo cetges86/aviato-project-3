@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 var app = express();
 
@@ -38,6 +40,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.json('error');
 });
+
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 var port = process.env.PORT || '3001';
 app.listen(port, () => {

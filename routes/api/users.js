@@ -1,15 +1,16 @@
 const router = require("express").Router();
-const userController = require("../../controllers/userController");
-const User = require('../models/user');
+const userController = require("../../controller/userController");
+const User = require('../../models/User');
 
 // Register
-router.get('/register',function(req,res){
-  res.render('register');
-});
-// login
-router.get('/login',function(req,res){
-  res.render('register');
-});
+// router.get('/register',function(req,res){
+//   res.render('register');
+// });
+// // login
+// router.get('/login',function(req,res){
+//   res.render('register');
+// });
+
 // Register users
 router.post('/register',function(req,res){
   var name=req.body.name;
@@ -27,7 +28,7 @@ router.post('/register',function(req,res){
   req.checkBody('password2','Password does not match').equals(req.body.password);
   var errors=req.validationErrors();
   if(errors){
-    res.render('register',{
+    res.json('register',{
       errors:errors
     });
   }else{
@@ -50,10 +51,13 @@ router.route("/")
   .get(userController.findAll)
   .post(userController.create);
 
+router.route("/:name")
+  .get(userController.findOne)
+
 // Matches with "/api/users/:id"
 router
   .route("/:id")
-  .get(userController.findById)
+  // .get(userController.findOne)
   .put(userController.update)
   .delete(userController.remove);
 

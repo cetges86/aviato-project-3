@@ -39,11 +39,11 @@ app.use(function(err, req, res, next) {
   res.json('error ' + err);
 });
 
+app.use(routes);
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(routes);
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/yearbook_users";
 mongoose.connect(MONGODB_URI);

@@ -6,11 +6,8 @@ import "./Welcome.css";
 class Welcome extends Component {
 
     componentDidMount() {
-//API.getUser({})
+        
     }
-    
-
-
 
     render() {
         return (
@@ -50,19 +47,19 @@ class Welcome extends Component {
                                 {/* first row of photos */}
                                 <div className = 'columns'>
                                     <div className = 'column is-third'>
-                                        <figure class="image is-128x128">
+                                        <figure className="image is-128x128">
                                             <img src="https://bulma.io/images/placeholders/128x128.png"/>
                                         </figure>
                                     </div>
                                     
                                     <div className = 'column is-third'>
-                                        <figure class="image is-128x128">
+                                        <figure className="image is-128x128">
                                             <img src="https://bulma.io/images/placeholders/128x128.png"/>
                                         </figure>
                                     </div>
                                    
                                     <div className = 'column is-third'>
-                                        <figure class="image is-128x128">
+                                        <figure className="image is-128x128">
                                             <img src="https://bulma.io/images/placeholders/128x128.png"/>
                                         </figure>
                                     </div>
@@ -70,19 +67,19 @@ class Welcome extends Component {
                                 {/* first row of photos */}
                                 <div className = 'columns is-centered'>
                                     <div className = 'column is-third'>
-                                        <figure class="image is-128x128">
+                                        <figure className="image is-128x128">
                                             <img src="https://bulma.io/images/placeholders/128x128.png"/>
                                         </figure>
                                     </div>
                                     
                                     <div className = 'column is-third'>
-                                        <figure class="image is-128x128">
+                                        <figure className="image is-128x128">
                                             <img src="https://bulma.io/images/placeholders/128x128.png"/>
                                         </figure>
                                     </div>
                                    
                                     <div className = 'column is-third'>
-                                        <figure class="image is-128x128">
+                                        <figure className="image is-128x128">
                                             <img src="https://bulma.io/images/placeholders/128x128.png"/>
                                         </figure>
                                     </div>

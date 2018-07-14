@@ -4,6 +4,9 @@
   border: none;
   font-family: 'Josefin Sans', sans-serif; }
 
+#header {
+  background-color: red; }
+
 .card {
   border: none;
   padding: 10px; }

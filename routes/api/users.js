@@ -45,12 +45,12 @@ router.post('/register',function(req,res){
   }
 });
 
-// Matches with "/api/books"
+// Matches with "/api/users"
 router.route("/")
   .get(userController.findAll)
   .post(userController.create);
 
-// Matches with "/api/books/:id"
+// Matches with "/api/users/:id"
 router
   .route("/:id")
   .get(userController.findById)

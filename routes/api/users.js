@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const userController = require("../../controller/userController");
 const User = require('../../models/User');
+const auth = require('../auth');
 
 // Register
 // router.get('/register',function(req,res){
@@ -50,9 +51,6 @@ router.post('/register',function(req,res){
 router.route("/")
   .get(userController.findAll)
   .post(userController.create);
-
-router.route("/:name")
-  .get(userController.findOne)
 
 // Matches with "/api/users/:id"
 router

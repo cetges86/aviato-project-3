@@ -1,6 +1,6 @@
 const db = require("../models");
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+const passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
+
 
 // Defining methods for the booksController
 module.exports = {
@@ -12,22 +12,18 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findOne: function (req, res) {
-    console.log(req.params)
-    console.log(req.body)
-    passport.use(new LocalStrategy (
-      function (email, password, done) {
-        db.User.findOne({ email: email }, function (err, user) {
-          if (err) { return done(err); }
-          if (!user) {
-            return done(null, false, { message: "Email address not found" });
-          }
-          if (!user.validPassword(password)) {
-            return done(null, false, { message: 'Incorrect Password' });
-          }
-          return done(null, user);
-        });
-      }
-    ))
+    console.log("params" + JSON.stringify(req.params))
+    
+      
+    
+
+    app.post('/login',
+      passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true
+      })
+    );
   },
   findById: function (req, res) {
     db.User
@@ -36,7 +32,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
-    console.log(req.body)
+    
     db.User
       .create(req.body)
       .then(dbModel => res.json(dbModel))

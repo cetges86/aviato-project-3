@@ -5,11 +5,11 @@ export default {
   getAllUsers: function() {
     return axios.get("/api/users");
   },
-  getUser: function(email, password, id) {
-    return axios.post("/signin/" + email + password);
+  getUser: function(email, password) {
+    return axios.post("/api/users/signIn" + email + password);
   },
   createUser: function(userData) {
-    return axios.post("/api/users", userData);
+    return axios.post("/api/users/signUp", userData);
   }
 //   // Gets the book with the given id
 //   getBook: function(id) {

@@ -1,16 +1,17 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var mongoose = require('mongoose');
-var passport = require('passport');
+// **** DEPENDENCIES ****
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose = require('mongoose');
+const passport = require('passport');
 const session = require('express-session');
 const routes = require('./routes');
 
+const app = express();
 
-var app = express();
-
+//middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -23,10 +24,10 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
+//catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
 
 // error handler
 app.use(function (err, req, res, next) {
@@ -38,19 +39,21 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.json('error ' + err);
 });
+//configure session
+app.use(session({ secret: 'team aviato', cookie: { maxAge: 600000 }, resave: true, saveUninitialized: true }));
 
-app.use(session({ secret: 'team aviato', cookie: { maxAge: 600000 } }));
-
+//initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
+// set up routing
 app.use(routes);
-require("./routes/auth")(app);
 
+//initialize mongoose db
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/yearbook_users";
 mongoose.connect(MONGODB_URI);
 
-
+// port listener for express server
 var port = process.env.PORT || '3001';
 app.listen(port, () => {
   console.log("Server started on port: " + port);

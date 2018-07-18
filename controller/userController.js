@@ -1,6 +1,4 @@
 const db = require("../models");
-const passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
-
 
 // Defining methods for the booksController
 module.exports = {
@@ -12,18 +10,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findOne: function (req, res) {
-    console.log("params" + JSON.stringify(req.params))
     
-      
-    
-
-    app.post('/login',
-      passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/login',
-        failureFlash: true
-      })
-    );
   },
   findById: function (req, res) {
     db.User
@@ -32,7 +19,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
-    
     db.User
       .create(req.body)
       .then(dbModel => res.json(dbModel))

@@ -5,6 +5,7 @@ import Nav from "./components/Nav";
 import Login from "./pages/Login/Login";
 import Welcome from "./pages/Welcome/Welcome";
 import SignUp from "./pages/SignUp/SignUp";
+import Yearbook from "./pages/Yearbook/Yearbook";
 
 import "./main.css"
 
@@ -18,6 +19,7 @@ const App = () => (
                     {/* <Route exact path="/yearbook" component={Yearbook} /> */}
                     {/* <Route exact path="/user/:id" component={Profile} /> */}
                 <Route exact path="/signup" component={SignUp} />
+                <Route exact path="/yearbook" component = {Yearbook} />
                 <Route component={NoMatch} />
             </Switch>
         </div>

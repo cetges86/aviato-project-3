@@ -6,12 +6,10 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+const routes = require('./routes');
+
 
 var app = express();
-
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/yearbook_users";
-mongoose.connect(MONGODB_URI);
-mongoose.Promise = Promise;
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -26,9 +24,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -38,12 +36,17 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.json('error');
+  res.json('error ' + err);
 });
 
-// Passport init
+app.use(routes);
+
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/yearbook_users";
+mongoose.connect(MONGODB_URI);
 
 
 var port = process.env.PORT || '3001';

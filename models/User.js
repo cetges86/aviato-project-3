@@ -22,14 +22,19 @@ var UserSchema = new Schema({
         unique: true
     },
     lang: {
-        type: String
+        type: String,
+        required:false
     },
     job: {
-        type: String
+        type: String,
+        required:false
     },
     looking: {
         type: Boolean,
         default: false
+    },
+    photo: {
+        type: String
     },
     links: {
         type: Schema.Types.ObjectId,

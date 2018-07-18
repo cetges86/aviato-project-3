@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import logo from "../../img/logo.png";
+//import { Route, Redirect } from "react-router-dom"
 import API from "../../util/API.js";
 import "./SignUp.css";
 
@@ -30,31 +31,39 @@ class SignUp extends Component {
 
     handleSubmit = () => {
         let newUser = {
-            photo: this.state.imgSrc,
             name: this.state.name,
-            address: this.state.address,
+            email: this.state.address,
             password: this.state.password,
             lang: this.state.lang,
             job: this.state.job,
-            looking: this.state.looking
+            looking: this.state.looking,
+            photo: this.state.imgSrc,
         };
 
-        console.log(newUser);
-
+        let completedForm = false;
         //input verification
         for (var prop in newUser) {
             if (newUser[prop] === "") {
-                console.log(`Form element ${prop} not completed`)
+                alert(`${prop} not completed!`)
             } else {
                 console.log(`Form element ${prop} complete with "${newUser[prop]}"`)
+                completedForm = true;
             }
         }
 
+        console.log(newUser);
         //trigger a post using mongoose to database adding new user data
-        //API.createUser
+        if (completedForm) {
+            API.createUser(newUser)
+                .then(res => {
+                    this.props.history.push("/welcome")
+                }) //go to welcome page 
+                .catch(err => console.log(err));
+        }
     }
 
     render() {
+
         return (
             <div className="section">
                 <div className="container">
@@ -92,7 +101,7 @@ class SignUp extends Component {
                                 <div className="field">
                                     <label className="label">Name</label>
                                     <div className="control has-icons-left">
-                                        <input className="input is-primary" type="text" placeholder="Name"
+                                        <input className="input is-primary is-rounded" type="text" placeholder="Name"
                                             onChange={event => this.setState({ name: event.target.value })} />
                                         <span className="icon is-small is-left">
                                             <i className="fas fa-user"></i>
@@ -103,7 +112,7 @@ class SignUp extends Component {
                                 <div className="field">
                                     <label className="label">E-mail</label>
                                     <div className="control has-icons-left">
-                                        <input className="input is-primary" type="email" placeholder="e.g. person@email.com"
+                                        <input className="input is-primary is-rounded" type="email" placeholder="e.g. person@email.com"
                                             onChange={event => this.setState({ address: event.target.value })} />
                                         <span className="icon is-small is-left">
                                             <i className="fas fa-envelope"></i>
@@ -113,7 +122,7 @@ class SignUp extends Component {
                                 <div className="field">
                                     <label className="label">Password</label>
                                     <div className="control has-icons-left">
-                                        <input className="input is-primary" type="password" placeholder="Type Password"
+                                        <input className="input is-primary is-rounded" type="password" placeholder="Type Password"
                                             onChange={event => this.setState({ password: event.target.value })} />
                                         <span className="icon is-small is-left">
                                             <i className="fas fa-lock"></i>
@@ -143,7 +152,7 @@ class SignUp extends Component {
                                     <div className="column is-half">
                                         <label className="label">Desired Job</label>
                                         <div className="control has-icons-left">
-                                            <input className="input is-primary" type="text" placeholder="Job Title"
+                                            <input className="input is-primary is-rounded" type="text" placeholder="Job Title"
                                                 onChange={event => this.setState({ job: event.target.value })} />
                                             <span className="icon is-small is-left">
                                                 <i className="fas fa-briefcase"></i>

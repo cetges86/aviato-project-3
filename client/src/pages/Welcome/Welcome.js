@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../../util/API"
+//import API from "../../util/API"
 import "./Welcome.css";
 
 
@@ -23,8 +23,8 @@ class Welcome extends Component {
                     {/* profile picture */}
                     <div id='photo' className='column is-half'>
                         photo
-                        <figure class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                        <figure className="image is-128x128">
+                            <img alt="user-profile" src="https://bulma.io/images/placeholders/128x128.png"/>
                         </figure>
                     </div>
 
@@ -48,19 +48,19 @@ class Welcome extends Component {
                                 <div className = 'columns'>
                                     <div className = 'column is-third'>
                                         <figure className="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                                            <img alt="profile" src="https://bulma.io/images/placeholders/128x128.png"/>
                                         </figure>
                                     </div>
                                     
                                     <div className = 'column is-third'>
                                         <figure className="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                                            <img alt="profile" src="https://bulma.io/images/placeholders/128x128.png"/>
                                         </figure>
                                     </div>
                                    
                                     <div className = 'column is-third'>
                                         <figure className="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                                            <img alt="profile" src="https://bulma.io/images/placeholders/128x128.png"/>
                                         </figure>
                                     </div>
                                 </div>
@@ -68,19 +68,19 @@ class Welcome extends Component {
                                 <div className = 'columns is-centered'>
                                     <div className = 'column is-third'>
                                         <figure className="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                                            <img alt="profile" src="https://bulma.io/images/placeholders/128x128.png"/>
                                         </figure>
                                     </div>
                                     
                                     <div className = 'column is-third'>
                                         <figure className="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                                            <img alt="profile" src="https://bulma.io/images/placeholders/128x128.png"/>
                                         </figure>
                                     </div>
                                    
                                     <div className = 'column is-third'>
                                         <figure className="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                                            <img alt="profile" src="https://bulma.io/images/placeholders/128x128.png"/>
                                         </figure>
                                     </div>
                                 </div>

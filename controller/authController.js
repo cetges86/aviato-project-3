@@ -16,8 +16,7 @@ module.exports = {
     },
 
     signIn: passport.authenticate('local', {
-        failureRedirect: '/',
-        failureFlash: "Wrong Username or Password"
+        failureRedirect: '/'
     }), function(req, res) {
         res.json("authenticated!");
     },

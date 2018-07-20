@@ -6,7 +6,7 @@ export default {
     return axios.get("/api/users");
   },
   getUser: function(email, password) {
-    return axios.post("/api/users/signIn" + email + password);
+    return axios.post("/api/users/login" + email + password);
   },
   createUser: function(userData) {
     return axios.post("/api/users/signUp", userData);

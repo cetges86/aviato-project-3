@@ -5,7 +5,7 @@
   "scripts": {
     "heroku-postbuild": "cd client && npm i && npm run build",
     "start": "node app.js",
-    "dev": "concurrently \"node app.js\" \"cd client && yarn start\""
+    "dev": "concurrently \"nodemon app.js\" \"cd client && yarn start\""
   },
   "dependencies": {
     "bulma": "^0.7.1",

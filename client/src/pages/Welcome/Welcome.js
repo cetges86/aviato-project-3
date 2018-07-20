@@ -1,12 +1,21 @@
 import React, { Component } from "react";
-//import API from "../../util/API"
+import API from "../../util/API"
 import "./Welcome.css";
 
 
-class Welcome extends Component {
 
+class Welcome extends Component {
+    
     componentDidMount() {
-        
+        API.getUser(req.params.id).then(res => {
+            this.setState({userdata: res})
+        })
+    }
+
+    state = {
+        userdata = {
+
+        }
     }
 
     render() {

@@ -1,48 +1,45 @@
 import React, { Component } from 'react';
+import YearbookCard from './YearbookCard.js'
 // import logo from "../../img/logo.png";
 //import { Route, Redirect } from "react-router-dom"
 import API from "../../util/API.js";
 import "./Yearbook.css";
 
 
+
 class Yearbook extends Component {
 
-   componentDidMount() {
+    state = {
+        users: []
+    }
 
-   };
+    componentDidMount() {
+        API.getAllUsers().then(res => {
+            console.log(res)
+            this.setState({users: res.data}) 
+        })
+        .catch(err => console.log(err))
+    }
+    render() {
+        return(
+            <div>
+            {this.state.users.map(user => {
+        return <YearbookCard
+                key = {user._id}
+            // name={this.state.name}
+            // email={this.state.email}
+            // lang={this.state.lang}
+            // job={this.state.job}
+            // photo={this.state.photo}
+            {...user} /> })}
+            </div>
+    )}
 
-   render() {
-       return (
-        <div className='card'>
-            <div className='card-image'>
-            <figure className='image is-4by3'>
-                <img src='https://bulma.io/images/placeholders/1280x960.png' alt='Placeholder image'/>
-            </figure>
-            </div>
-            <div className='card-content'>
-            <div className='media'>
-                <div className='media-left'>
-                <figure className='image is-48x48'>
-                    <img src='https://bulma.io/images/placeholders/96x96.png' alt='Placeholder image'/>
-                </figure>
-                </div>
-                <div className='media-content'>
-                <p className='title is-4'>John Smith</p>
-                <p className='subtitle is-6'>@johnsmith</p>
-                </div>
-            </div>
-        
-            <div className='content'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                <a href='#'>#css</a> <a href='#'>#responsive</a>
-                <br/>
-                <time datetime='2016-1-1'>11:09 PM - 1 Jan 2016</time>
-            </div>
-            </div>
-      </div>
- )
- }
-}
+    
+ 
+
+   
+};
+
 
 export default Yearbook;

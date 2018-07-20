@@ -56,7 +56,8 @@ class SignUp extends Component {
         if (completedForm) {
             API.createUser(newUser)
                 .then(res => {
-                    this.props.history.push("/welcome")
+                    console.log(res);
+                    this.props.history.push(`/user/${res.user._id}`)
                 }) //go to welcome page 
                 .catch(err => console.log(err));
         }

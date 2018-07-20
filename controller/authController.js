@@ -1,5 +1,6 @@
 const passport = require('../config/passport');
 const controller = require('../controller/userController');
+const db = require('../models')
 
 // Defining methods for the authController
 module.exports = {
@@ -22,17 +23,10 @@ module.exports = {
     },
 
     signUp: function (req, res) {
-        console.log(`Body: ${req.body}`)
-        console.log(`Params: ${req.params}`)
-        var user = new User(req.body);
-        // Update this to use the UserController
-        controller.create(user, function (status) {
-            if (!status) {
-                res.json("ur dum")
-                return false
-            }
-            res.json("success!");
-        })
+        db.User
+            .create(req.body)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     },
 
     signOut: function () {

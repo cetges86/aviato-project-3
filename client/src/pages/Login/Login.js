@@ -13,7 +13,7 @@ class Login extends Component {
 
     onSubmit = () => {
         console.log(this.state.email)
-        API.getUser(this.state.email, this.state.password).then(res => {
+        API.login(this.state.email, this.state.password).then(res => {
             console.log(res)
             this.props.history.push("/welcome")
         })

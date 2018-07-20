@@ -5,7 +5,10 @@ export default {
   getAllUsers: function() {
     return axios.get("/api/users");
   },
-  getUser: function(email, password) {
+  getUser: function(id) {
+    return axios.get("/api/users/" + id);
+  },
+  login: function(email, password) {
     return axios.post("/api/users/login" + email + password);
   },
   createUser: function(userData) {

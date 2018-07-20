@@ -12,12 +12,15 @@ class Login extends Component {
     }
 
     onSubmit = () => {
-        console.log(this.state.email)
         API.login(this.state.email, this.state.password).then(res => {
-            console.log(res)
-            this.props.history.push("/welcome")
+            if(res.request.status === 200){
+                console.log(res);
+                //this.props.history.push(`/user/${res.data._id}`)
+            }else {
+                console.log("user name or password incorrect")
+            }
         })
-            .catch(err => console.log(err));
+        .catch(err => console.log(err));
     }
 
 
@@ -35,7 +38,7 @@ class Login extends Component {
                             <div className="field">
                                 <p className="control has-icons-left has-icons-right">
                                     <input className="input is-rounded" type="email" placeholder="Email"
-                                        onChange={event => this.setState({ email: event.target.value })} />
+                                        onChange={event => this.setState({ name: event.target.value })} />
                                     <span className="icon is-small is-left">
                                         <i className="fas fa-envelope"></i>
                                     </span>
@@ -52,7 +55,7 @@ class Login extends Component {
                             </div>
                             <div className="field is-grouped">
                                 <input className="button is-rounded is-primary" type="submit" value="Login"
-                                    onClick={this.onSubmit} />
+                                onClick = {this.onSubmit} />
                                 {/* <a href="/signup"> <input className="button is-rounded" value="Sign Up" /> </a> */}
                             </div>
                         </div>

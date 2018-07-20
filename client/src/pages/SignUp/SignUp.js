@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import logo from "../../img/logo.png";
-//import { Route, Redirect } from "react-router-dom"
+import { Route, Redirect } from "react-router-dom"
 import API from "../../util/API.js";
 import "./SignUp.css";
 
@@ -58,6 +58,7 @@ class SignUp extends Component {
                 .then(res => {
                     console.log(res);
                     this.props.history.push(`/user/${res.data._id}`)
+                        //<Redirect to ={`/user/${res.data._id}`}/>
                 }) //go to welcome page 
                 .catch(err => console.log(err));
         }

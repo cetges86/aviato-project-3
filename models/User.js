@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var bcrypt = require('bcrypt-nodejs');
 
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
@@ -23,11 +24,11 @@ var UserSchema = new Schema({
     },
     lang: {
         type: String,
-        required:false
+        required: false
     },
     job: {
         type: String,
-        required:false
+        required: false
     },
     looking: {
         type: Boolean,
@@ -41,6 +42,18 @@ var UserSchema = new Schema({
         ref: "Links"
     }
 });
+
+UserSchema.methods.validPassword = function (password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+UserSchema.pre("save", function (next) {
+    var user = this;
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    next();
+});
+
+
 
 // This creates our model from the above schema, using mongoose's model method
 var User = mongoose.model("User", UserSchema);

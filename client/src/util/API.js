@@ -9,7 +9,7 @@ export default {
     return axios.get("/api/users/" + id);
   },
   login: function(email, password) {
-    return axios.post("/api/users/login" + email + password);
+    return axios.post("/api/users/signIn", email, password);
   },
   createUser: function(userData) {
     return axios.post("/api/users/signUp", userData);

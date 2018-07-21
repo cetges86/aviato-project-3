@@ -12,15 +12,17 @@ class Login extends Component {
     }
 
     onSubmit = () => {
-        API.login(this.state.email, this.state.password).then(res => {
-            if(res.request.status === 200){
+
+        let loginInfo = { email: this.state.email, password: this.state.password }
+        API.login(loginInfo).then(res => {
+            if (res.request.status === 200) {
                 console.log(res);
-                //this.props.history.push(`/user/${res.data._id}`)
-            }else {
+                this.props.history.push(`/user/${res.data._id}`)
+            } else {
                 console.log("user name or password incorrect")
             }
         })
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
     }
 
 
@@ -38,7 +40,7 @@ class Login extends Component {
                             <div className="field">
                                 <p className="control has-icons-left has-icons-right">
                                     <input className="input is-rounded" type="email" placeholder="Email"
-                                        onChange={event => this.setState({ name: event.target.value })} />
+                                        onChange={event => this.setState({ email: event.target.value })} />
                                     <span className="icon is-small is-left">
                                         <i className="fas fa-envelope"></i>
                                     </span>
@@ -55,7 +57,7 @@ class Login extends Component {
                             </div>
                             <div className="field is-grouped">
                                 <input className="button is-rounded is-primary" type="submit" value="Login"
-                                onClick = {this.onSubmit} />
+                                    onClick={this.onSubmit} />
                                 {/* <a href="/signup"> <input className="button is-rounded" value="Sign Up" /> </a> */}
                             </div>
                         </div>

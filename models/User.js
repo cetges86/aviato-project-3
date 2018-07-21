@@ -44,10 +44,6 @@ var UserSchema = new Schema({
     },
     photo: {
         type: String
-    },
-    links: {
-        type: Schema.Types.ObjectId,
-        ref: "Links"
     }
 });
 

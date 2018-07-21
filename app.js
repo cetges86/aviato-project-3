@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 const routes = require('./routes');
+const flash = require('connect-flash');
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use(function (err, req, res, next) {
 });
 //configure session
 app.use(session({ secret: 'team aviato', cookie: { maxAge: 600000 }, resave: true, saveUninitialized: true }));
+app.use(flash());
 
 //initialize passport
 app.use(passport.initialize());

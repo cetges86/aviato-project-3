@@ -7,13 +7,15 @@ import "./Welcome.css";
 
 class Welcome extends Component {
 
-    // componentDidMount(req) {
-    //     API.getUser(req.params.id).then(res => {
-    //         this.setState({ userdata: res })
-    //     });
+    componentDidMount(props) {
+        console.log(this.props.match.params.id)
+        API.getUser(this.props.match.params.id).then(res => {
+            this.setState({ userdata: res.data })
+            console.log(res);
+        });
 
 
-    // }
+    }
 
     state = {
         userdata : {}
@@ -41,6 +43,7 @@ class Welcome extends Component {
                     {/*name and info*/}
                     <div className='column is-half'>
                        <h1>{this.state.userdata.name}</h1>
+                       <p>{this.state.userdata.lang}</p>
                     </div>
                 </div>
 

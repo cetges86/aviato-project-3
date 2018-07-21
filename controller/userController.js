@@ -1,4 +1,5 @@
 const db = require("../models");
+var mongoose = require('mongoose');
 
 // Defining methods for the booksController
 module.exports = {
@@ -10,13 +11,18 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findOne: function (req, res) {
-    
+    db.User
+      .find()
+      
   },
   findById: function (req, res) {
-    db.User
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    console.log(req.params);
+    if(mongoose.Types.ObjectId.isValid(req.params.id)){
+      db.User
+        .findById(req.params.id)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    }
   },
   create: function (req, res) {
     db.User

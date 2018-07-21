@@ -1,5 +1,4 @@
 const passport = require('../config/passport');
-const controller = require('../controller/userController');
 const db = require('../models')
 
 // Defining methods for the authController
@@ -15,10 +14,9 @@ module.exports = {
         }
     },
 
-    signIn: passport.authenticate('local', {
-        failureRedirect: '/'
-    }), function(req, res) {
-        res.json("authenticated!");
+    signIn: 
+    passport.authenticate('local'), function(req, res) {
+        res.json("/authenticated");
     },
 
     signUp: function (req, res) {

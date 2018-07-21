@@ -11,9 +11,14 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findOne: function (req, res) {
-    db.User
-      .find()
-      
+    console.log("request: " + req)
+    if(mongoose.Types.ObjectId.isValid(req)){
+      db.User
+        .findById(req)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => console.log(err));
+    }
+    
   },
   findById: function (req, res) {
     console.log(req.params);

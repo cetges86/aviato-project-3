@@ -43,6 +43,7 @@ class Welcome extends Component {
                     {/*name and info*/}
                     <div className='column is-half'>
                        <h1>{this.state.userdata.name}</h1>
+                       <p>Contact: {this.state.userdata.email}</p>
                        <p>{this.state.userdata.lang}</p>
                     </div>
                 </div>

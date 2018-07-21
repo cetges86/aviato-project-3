@@ -17,6 +17,14 @@ var UserSchema = new Schema({
         required: true,
         unique: true
     },
+    linked: {
+        type: String,
+        unique: true
+    },
+    github: {
+        type: String,
+        unique: true
+    },
     password: {
         type: String,
         required: true,

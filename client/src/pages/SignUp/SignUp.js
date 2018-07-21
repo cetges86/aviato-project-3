@@ -15,6 +15,8 @@ class SignUp extends Component {
         password: "",
         lang: "",
         job: "",
+        linked: "",
+        github: "",
         looking: false
     }
 
@@ -38,6 +40,8 @@ class SignUp extends Component {
             job: this.state.job,
             looking: this.state.looking,
             photo: this.state.imgSrc,
+            linked: this.state.linked,
+            github: this.state.github
         };
 
         let completedForm = false;
@@ -117,6 +121,26 @@ class SignUp extends Component {
                                             onChange={event => this.setState({ address: event.target.value })} />
                                         <span className="icon is-small is-left">
                                             <i className="fas fa-envelope"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="field">
+                                    <label className="label">LinkedIn</label>
+                                    <div className="control has-icons-left">
+                                        <input className="input is-primary is-rounded" type="email" placeholder=""
+                                            onChange={event => this.setState({ linked: event.target.value })} />
+                                        <span className="icon is-small is-left">
+                                            <i className="fab fa-linkedin"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="field">
+                                    <label className="label">Github</label>
+                                    <div className="control has-icons-left">
+                                        <input className="input is-primary is-rounded" type="email" placeholder=""
+                                            onChange={event => this.setState({ github: event.target.value })} />
+                                        <span className="icon is-small is-left">
+                                            <i className="fab fa-github-square"></i>
                                         </span>
                                     </div>
                                 </div>

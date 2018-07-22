@@ -2,23 +2,24 @@ import React, { Component } from "react";
 //import { Route, Redirect } from "react-router-dom"
 import API from "../../util/API"
 import "./Welcome.css";
+import ClassmateCard from "../../components/ClassmateCard";
 
 
 
 class Welcome extends Component {
 
-    componentDidMount(props) {
-        console.log(this.props.match.params.id)
+    componentDidMount() {
         API.getUser(this.props.match.params.id).then(res => {
             this.setState({ userdata: res.data })
-            console.log(res);
         });
 
+        API.getAllUsers().then(res =>  this.setState({ classmates: res.data }))
 
     }
 
     state = {
-        userdata : {}
+        userdata: {},
+        classmates: []
     }
 
     render() {
@@ -33,7 +34,7 @@ class Welcome extends Component {
 
                 <div className='columns'>
                     {/* profile picture */}
-                    <div id='photo' className='column is-half'>
+                    <div id='photo' className='column is-one-quarter'>
                         photo
                         <figure className="image is-128x128">
                             <img alt="user-profile" src={this.state.userdata.photo} />
@@ -41,10 +42,14 @@ class Welcome extends Component {
                     </div>
 
                     {/*name and info*/}
-                    <div className='column is-half'>
-                       <h1>{this.state.userdata.name}</h1>
-                       <p>Contact: {this.state.userdata.email}</p>
-                       <p>{this.state.userdata.lang}</p>
+                    <div className='column is-three-quarters'>
+                        <h1 className="is-size-1">{this.state.userdata.name}</h1>
+                        <p>Contact:<a href={"mailto:" + this.state.userdata.email}> {this.state.userdata.email}</a></p>
+                        <p>Primary Programming Language: {this.state.userdata.lang}</p>
+                        <p>Currently Seeking Employment: {
+                            (this.state.userdata.looking)
+                            ? "Yes" : "No"
+                            } </p>
                     </div>
                 </div>
 
@@ -53,87 +58,21 @@ class Welcome extends Component {
                     {/* career links */}
                     <div id='photo' className='column is-half'>
                         career links
-                        </div>
+                        <ul>
+                            <li><a href={this.state.userdata.linked}>LinkedIn Profile</a></li>
+                            <li><a href={this.state.userdata.github}>Github Profile</a></li>
+                        </ul>
+                    </div>
                     {/*classmates*/}
                     <div className='column is-half'>
                         classmates
                             <div className='card is-full'>
                             {/* first row of photos */}
-                            <div className='columns'>
-                                <div className='column is-third'>
-                                    <figure className="image is-128x128">
-                                        <img alt="profile" src="https://bulma.io/images/placeholders/128x128.png" />
-                                    </figure>
-                                </div>
-
-                                <div className='column is-third'>
-                                    <figure className="image is-128x128">
-                                        <img alt="profile" src="https://bulma.io/images/placeholders/128x128.png" />
-                                    </figure>
-                                </div>
-
-                                <div className='column is-third'>
-                                    <figure className="image is-128x128">
-                                        <img alt="profile" src="https://bulma.io/images/placeholders/128x128.png" />
-                                    </figure>
-                                </div>
-                            </div>
-                            {/* first row of photos */}
-                            <div className='columns is-centered'>
-                                <div className='column is-third'>
-                                    <figure className="image is-128x128">
-                                        <img alt="profile" src="https://bulma.io/images/placeholders/128x128.png" />
-                                    </figure>
-                                </div>
-
-                                <div className='column is-third'>
-                                    <figure className="image is-128x128">
-                                        <img alt="profile" src="https://bulma.io/images/placeholders/128x128.png" />
-                                    </figure>
-                                </div>
-
-                                <div className='column is-third'>
-                                    <figure className="image is-128x128">
-                                        <img alt="profile" src="https://bulma.io/images/placeholders/128x128.png" />
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-
-                    <div id="loginDiv" className="column is-half is-offset-one-quarter">
-                        <div className="card">
-                            <div className="card-image has-text-centered">
-                                <h1 id="logo" className="is-size-1"> yearbook() </h1>
-                                <p>USER PAGE</p>
-                            </div>
-                            <div className="card-content">
-                                <div className="field">
-                                    <p className="control has-icons-left has-icons-right">
-                                        <input className="input is-rounded" type="email" placeholder="Email" />
-                                        <span className="icon is-small is-left">
-                                            <i className="fas fa-envelope"></i>
-                                        </span>
-                                        <span className="icon is-small is-right">
-                                            <i className="fas fa-check"></i>
-                                        </span>
-                                    </p>
-                                </div>
-                                <div className="field">
-                                    <p className="control has-icons-left">
-                                        <input className="input is-rounded" type="password" placeholder="Password" />
-                                        <span className="icon is-small is-left">
-                                            <i className="fas fa-lock"></i>
-                                        </span>
-                                    </p>
-                                </div>
-                                <input className="button is-rounded is-primary" type="submit" value="Submit" />
-                            </div>
+                            {this.state.classmates.map(student => {
+                                return <ClassmateCard 
+                                key = {student._id}
+                                {...student} />
+                            })}
                         </div>
                     </div>
                 </div>

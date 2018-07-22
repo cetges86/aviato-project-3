@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import logo from "../../img/logo.png";
-import { Route, Redirect } from "react-router-dom"
 import API from "../../util/API.js";
 import "./SignUp.css";
 
@@ -17,6 +15,7 @@ class SignUp extends Component {
         job: "",
         linked: "",
         github: "",
+        portfolio:"",
         looking: false
     }
 
@@ -125,26 +124,6 @@ class SignUp extends Component {
                                     </div>
                                 </div>
                                 <div className="field">
-                                    <label className="label">LinkedIn</label>
-                                    <div className="control has-icons-left">
-                                        <input className="input is-primary is-rounded" type="email" placeholder=""
-                                            onChange={event => this.setState({ linked: event.target.value })} />
-                                        <span className="icon is-small is-left">
-                                            <i className="fab fa-linkedin"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className="field">
-                                    <label className="label">Github</label>
-                                    <div className="control has-icons-left">
-                                        <input className="input is-primary is-rounded" type="email" placeholder=""
-                                            onChange={event => this.setState({ github: event.target.value })} />
-                                        <span className="icon is-small is-left">
-                                            <i className="fab fa-github-square"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className="field">
                                     <label className="label">Password</label>
                                     <div className="control has-icons-left">
                                         <input className="input is-primary is-rounded" type="password" placeholder="Type Password"
@@ -154,6 +133,37 @@ class SignUp extends Component {
                                         </span>
                                     </div>
                                 </div>
+                                <div className="field">
+                                    <label className="label">LinkedIn</label>
+                                    <div className="control has-icons-left">
+                                        <input className="input is-primary is-rounded" type="text" placeholder="LinkedIn URL"
+                                            onChange={event => this.setState({ linked: event.target.value })} />
+                                        <span className="icon is-small is-left">
+                                            <i className="fab fa-linkedin"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="field">
+                                    <label className="label">Github</label>
+                                    <div className="control has-icons-left">
+                                        <input className="input is-primary is-rounded" type="text" placeholder="Github URL"
+                                            onChange={event => this.setState({ github: event.target.value })} />
+                                        <span className="icon is-small is-left">
+                                            <i className="fab fa-github-square"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="field">
+                                    <label className="label">Personal Portfolio Site</label>
+                                    <div className="control has-icons-left">
+                                        <input className="input is-primary is-rounded" type="text" placeholder="Your Portfolio URL"
+                                            onChange={event => this.setState({ portfolio: event.target.value })} />
+                                        <span className="icon is-small is-left">
+                                            <i className="fas fa-laptop"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                
                                 <br />
                                 <div className="columns">
                                     <div className="column is-half">

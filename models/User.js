@@ -25,6 +25,10 @@ var UserSchema = new Schema({
         type: String,
         unique: true
     },
+    portfolio: {
+        type: String,
+        unique: true
+    },
     password: {
         type: String,
         required: true,

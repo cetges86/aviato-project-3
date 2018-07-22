@@ -13,6 +13,12 @@ export default {
   },
   createUser: function (userData) {
     return axios.post("/api/users/signUp", userData);
+  },
+  logout: function() {
+    return axios.get("api/users/logout");
+  },
+  checkAuthenticated: function () {
+    return axios.get("api/users/authenticated")
   }
   //   // Gets the book with the given id
   //   getBook: function(id) {

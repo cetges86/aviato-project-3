@@ -8,21 +8,34 @@ class Login extends Component {
 
     state = {
         email: "",
-        password: ""
+        password: "",
+        message:"please login below",
+        checkAuth:""
+    }
+
+    componentDidMount(){
+        API.checkAuthenticated().then(res => {
+            this.setState({checkAuth:res.data})
+            console.log("check auth " + this.state.checkAuth );
+            if (this.state.checkAuth !== "Not Logged In"){
+               this.props.history.push(`/user/${this.state.checkAuth.user._id}`)
+            }
+        })
+
     }
 
     onSubmit = () => {
 
         let loginInfo = { email: this.state.email, password: this.state.password }
-        API.login(loginInfo).then(res => {
+        API.login(loginInfo).then(((res,err) => {
+            console.log(res);
             if (res.request.status === 200) {
                 console.log(res);
                 this.props.history.push(`/user/${res.data._id}`)
-            } else {
-                console.log("user name or password incorrect")
-            }
-        })
-            .catch(err => console.log(err));
+            } 
+        }))
+        .catch(err => this.setState({message: "user name or password incorrect"})
+    );
     }
 
 
@@ -34,7 +47,7 @@ class Login extends Component {
                         <div className="card-image has-text-centered">
                             <img src={logo} alt="yearbook logo" className="" />
                             {/* <h1 id="logo" className="is-size-1"> yearbook() </h1> */}
-                            <p>please login below</p>
+                            <p>{this.state.message}</p>
                         </div>
                         <div className="card-content">
                             <div className="field">

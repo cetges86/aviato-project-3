@@ -16,8 +16,8 @@ const Nav = () => (
                 </a>
             </div>
             <div className="navbar-end">
-                <a className="navbar-item">
-                    About
+                <a className="navbar-item" href="/logout">
+                    Log Out
                     </a>
             </div>
         </div>

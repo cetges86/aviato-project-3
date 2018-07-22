@@ -1,12 +1,24 @@
 const router = require("express").Router();
 const userController = require("../../controller/userController");
-const authController = require("../../controller/authController"); 
+const authController = require("../../controller/authController");
 const passport = require('../../config/passport');
 
 // Matches with "/api/users"
 router.route("/")
   .get(userController.findAll)
   .post(userController.create);
+
+router
+  .route("/authenticated")
+  .get(authController.checkAuthenticated);
+
+router
+  .route("/logout")
+  .get(
+    function (req, res) {
+      req.logout();
+    }
+  );
 
 // Matches with "/api/users/:id"
 router
@@ -15,9 +27,6 @@ router
   .put(userController.update)
   .delete(userController.remove);
 
-router
-  .route("/authenticated")
-  .get(authController.checkAuthenticated);
 
 router
   .route("/signUp")
@@ -27,14 +36,11 @@ router
   .route("/signIn")
   .post(
     passport.authenticate('local'),
-    function(req, res) {
+    function (req, res) {
       res.json(req.user)
     }
   );
 
-router
-  .route("/signOut")
-  .get(authController.signOut);
 
 module.exports = router;
 

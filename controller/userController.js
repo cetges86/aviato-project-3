@@ -21,7 +21,6 @@ module.exports = {
     
   },
   findById: function (req, res) {
-    console.log(req.params);
     if(mongoose.Types.ObjectId.isValid(req.params.id)){
       db.User
         .findById(req.params.id)

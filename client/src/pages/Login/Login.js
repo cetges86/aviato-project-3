@@ -9,16 +9,16 @@ class Login extends Component {
     state = {
         email: "",
         password: "",
-        message:"please login below",
-        checkAuth:""
+        message: "please login below",
+        checkAuth: ""
     }
 
-    componentDidMount(){
+    componentDidMount() {
         API.checkAuthenticated().then(res => {
-            this.setState({checkAuth:res.data})
-            console.log("check auth " + this.state.checkAuth );
-            if (this.state.checkAuth !== "Not Logged In"){
-               this.props.history.push(`/user/${this.state.checkAuth.user._id}`)
+            this.setState({ checkAuth: res.data })
+            console.log("check auth " + this.state.checkAuth);
+            if (this.state.checkAuth !== "Not Logged In") {
+                this.props.history.push(`/user/${this.state.checkAuth.user._id}`)
             }
         })
 
@@ -27,15 +27,15 @@ class Login extends Component {
     onSubmit = () => {
 
         let loginInfo = { email: this.state.email, password: this.state.password }
-        API.login(loginInfo).then(((res,err) => {
+        API.login(loginInfo).then(((res, err) => {
             console.log(res);
             if (res.request.status === 200) {
                 console.log(res);
                 this.props.history.push(`/user/${res.data._id}`)
-            } 
+            }
         }))
-        .catch(err => this.setState({message: "user name or password incorrect"})
-    );
+            .catch(err => this.setState({ message: "user name or password incorrect" })
+            );
     }
 
 

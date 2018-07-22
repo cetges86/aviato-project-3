@@ -53,6 +53,7 @@ app.use(routes);
 
 //initialize mongoose db
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/yearbook_users";
+mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
 // port listener for express server

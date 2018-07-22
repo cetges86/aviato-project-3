@@ -40,7 +40,8 @@ class SignUp extends Component {
             looking: this.state.looking,
             photo: this.state.imgSrc,
             linked: this.state.linked,
-            github: this.state.github
+            github: this.state.github,
+            portfolio: this.state.portfolio
         };
 
         let completedForm = false;

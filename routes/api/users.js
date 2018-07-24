@@ -2,6 +2,13 @@ const router = require("express").Router();
 const userController = require("../../controller/userController");
 const authController = require("../../controller/authController");
 const passport = require('../../config/passport');
+const bodyparser = require('body-parser');
+const formidable = require('formidable');
+const grid = require("gridfs-stream");
+const fs = require("fs");
+const mongoose = require("mongoose");
+const conn = mongoose.connection;
+
 
 // Matches with "/api/users"
 router.route("/")
@@ -29,9 +36,25 @@ router
 
 router  
   .route("/upload")
-  .post(function(){
-    console.log(":)")
-  })
+  .post(function (req, res) {
+    var form = new formidable.IncomingForm();
+    form.uploadDir = __dirname+"/Uploads";
+    form.keepExtensions = true;
+    form.parse(req, function (err, fields, files) {
+        if (!err) {
+            console.log('Files Uploaded: ' + files.file)
+            grid.mongo = mongoose.mongo;
+            var gfs = grid(conn.db);
+            var writestream = gfs.createWriteStream({
+                filename: files.name
+            });
+            fs.createReadStream(files.file.path).pipe(writestream);
+        }
+    });
+    form.on('end', function () {
+        res.send('Completed ... go check fs.files & fs.chunks in mongodb');
+    });
+});
 
 router
   .route("/signUp")
@@ -45,6 +68,8 @@ router
       res.json(req.user)
     }
   );
+
+
 
 
 module.exports = router;

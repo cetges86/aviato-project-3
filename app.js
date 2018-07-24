@@ -9,6 +9,7 @@ const passport = require('passport');
 const session = require('express-session');
 const routes = require('./routes');
 const flash = require('connect-flash');
+const bodyparser = require('body-parser');
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyparser.json({ limit: '50mb' }))
+app.use(bodyparser.urlencoded({ limit: '50mb', extended: true }));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client', 'build')));

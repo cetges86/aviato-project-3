@@ -19,6 +19,9 @@ export default {
   },
   checkAuthenticated: function () {
     return axios.get("api/users/authenticated")
+  },
+  uploadImage: function (file) {
+    return axios.post("api/users/upload", file)
   }
   //   // Gets the book with the given id
   //   getBook: function(id) {

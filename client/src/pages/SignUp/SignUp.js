@@ -15,19 +15,24 @@ class SignUp extends Component {
         job: "",
         linked: "",
         github: "",
-        portfolio:"",
+        portfolio: "",
         looking: false
     }
 
     getFileName = () => {
         var file = document.getElementById("file");
-        console.log(file.files);
         file.onchange = function () {
             if (file.files.length > 0) {
                 document.getElementById('filename').innerHTML = file.files[0].name;
             }
         };
         this.setState({ fileLabel: "Select a different photo" })
+    }
+    
+    fileUpload = () => {
+        var file = document.getElementById("file");
+        console.log(file.files[0]);
+        API.uploadImage(file.files[0]);
     }
 
     handleSubmit = () => {
@@ -61,7 +66,7 @@ class SignUp extends Component {
             API.createUser(newUser)
                 .then(res => {
                     this.props.history.push(`/user/${res.data._id}`)
-                        //<Redirect to ={`/user/${res.data._id}`}/>
+                    //<Redirect to ={`/user/${res.data._id}`}/>
                 }) //go to welcome page 
                 .catch(err => console.log(err));
         }
@@ -97,9 +102,10 @@ class SignUp extends Component {
                                                         {this.state.fileLabel}
                                                     </span>
                                                 </span>
-                                                <span id="filename" className="file-name">Upload</span>
+                                                <span id="filename" className="file-name">Select</span>
                                             </label>
                                         </div>
+                                            <a className="button is-rounded" onClick={this.fileUpload}>Upload</a>
                                     </div>
                                 </div>
                                 <br />
@@ -164,7 +170,7 @@ class SignUp extends Component {
                                         </span>
                                     </div>
                                 </div>
-                                
+
                                 <br />
                                 <div className="columns">
                                     <div className="column is-half">

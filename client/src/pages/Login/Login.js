@@ -16,9 +16,9 @@ class Login extends Component {
     componentDidMount() {
         API.checkAuthenticated().then(res => {
             this.setState({ checkAuth: res.data })
-            console.log("check auth " + this.state.checkAuth);
+            console.log("check auth " + JSON.stringify(this.state.checkAuth));
             if (this.state.checkAuth !== "Not Logged In") {
-                this.props.history.push(`/user/${this.state.checkAuth.user._id}`)
+                this.props.history.push(`/user/${this.state.checkAuth._id}`)
             }
         })
 

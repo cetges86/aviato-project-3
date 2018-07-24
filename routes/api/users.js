@@ -27,6 +27,11 @@ router
   .put(userController.update)
   .delete(userController.remove);
 
+router  
+  .route("/upload")
+  .post(function(){
+    console.log(":)")
+  })
 
 router
   .route("/signUp")

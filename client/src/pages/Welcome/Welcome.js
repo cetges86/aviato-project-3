@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import API from "../../util/API"
 import "./Welcome.css";
 import ClassmateCard from "../../components/ClassmateCard";
+import Youtube from "../../components/Youtube";
 
 
 
@@ -46,6 +47,7 @@ class Welcome extends Component {
                         <h1 className="is-size-1">{this.state.userdata.name}</h1>
                         <p>Contact:<a href={"mailto:" + this.state.userdata.email}> {this.state.userdata.email}</a></p>
                         <p>Primary Programming Language: {this.state.userdata.lang}</p>
+                        <p>Job Desired: {this.state.userdata.job}</p>
                         <p>Currently Seeking Employment: {
                             (this.state.userdata.looking)
                             ? "Yes" : "No"
@@ -61,7 +63,12 @@ class Welcome extends Component {
                         <ul>
                             <li><a href={this.state.userdata.linked}>LinkedIn Profile</a></li>
                             <li><a href={this.state.userdata.github}>Github Profile</a></li>
+                            <li><a href={this.state.userdata.portfolio}>Portfolio Page</a></li>
                         </ul>
+
+                        <div className="box">
+                            <Youtube user={this.state.userdata} />
+                            </div>
                     </div>
                     {/*classmates*/}
                     <div className='column is-half'>

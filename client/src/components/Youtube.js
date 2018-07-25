@@ -13,8 +13,7 @@ class Youtube extends Component {
         selectedVideo: null
     }
 
-    componentDidMount = (props) => {
-        console.log(props)
+    componentDidMount = () => {
         this.videoSearch("How to get a job after bootcamp");
     }
 
@@ -34,6 +33,7 @@ class Youtube extends Component {
             <h3 className="has-text-centered">Youtube Search</h3>
             <Searchbar onSearchTermChange={videoSearch} />
             <VideoDetail video={this.state.selectedVideo} />
+            <br />
             <VideoList
                 onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
                 videos={this.state.videos} />

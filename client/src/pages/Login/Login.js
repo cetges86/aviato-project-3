@@ -10,15 +10,15 @@ class Login extends Component {
         email: "",
         password: "",
         message: "please login below",
-        checkAuth: ""
+        userData: ""
     }
 
     componentDidMount() {
         API.checkAuthenticated().then(res => {
-            this.setState({ checkAuth: res.data })
-            console.log("check auth " + JSON.stringify(this.state.checkAuth));
-            if (this.state.checkAuth !== "Not Logged In") {
-                this.props.history.push(`/user/${this.state.checkAuth._id}`)
+            this.setState({ userData: res.data })
+            console.log("check auth " + JSON.stringify(this.state.userData));
+            if (this.state.userData !== "Not Logged In") {
+                this.props.history.push(`/user/${this.state.userData._id}`)
             }
         })
 

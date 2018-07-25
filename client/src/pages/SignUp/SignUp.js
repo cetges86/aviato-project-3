@@ -86,7 +86,17 @@ class SignUp extends Component {
                                         </figure>
                                     </div>
                                     <div className="media-content">
-                                        <div className="file has-name">
+                                    <div className="field">
+                                    <label className="label">Profile Photo URL</label>
+                                    <div className="control has-icons-left">
+                                        <input className="input is-primary is-rounded" type="text" placeholder="Image URL"
+                                            onChange={event => this.setState({ imgSrc: event.target.value })} />
+                                        <span className="icon is-small is-left">
+                                            <i className="fas fa-image"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                        {/* <div className="file has-name">
                                             <label className="file-label">
                                                 <input onInput={this.getFileName} id="file" className="file-input" type="file" name="resume" />
                                                 <span className="file-cta">
@@ -99,7 +109,7 @@ class SignUp extends Component {
                                                 </span>
                                                 <span id="filename" className="file-name">Upload</span>
                                             </label>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                                 <br />

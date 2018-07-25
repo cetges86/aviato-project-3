@@ -4,6 +4,7 @@ import API from "../../util/API"
 import "./Welcome.css";
 import ClassmateCard from "../../components/ClassmateCard";
 import Youtube from "../../components/Youtube";
+import JobSearch from "../../components/JobSearch";
 
 
 
@@ -14,7 +15,7 @@ class Welcome extends Component {
             this.setState({ userdata: res.data })
         });
 
-        API.getAllUsers().then(res =>  this.setState({ classmates: res.data }))
+        API.getAllUsers().then(res => this.setState({ classmates: res.data }))
 
     }
 
@@ -50,8 +51,8 @@ class Welcome extends Component {
                         <p>Job Desired: {this.state.userdata.job}</p>
                         <p>Currently Seeking Employment: {
                             (this.state.userdata.looking)
-                            ? "Yes" : "No"
-                            } </p>
+                                ? "Yes" : "No"
+                        } </p>
                     </div>
                 </div>
 
@@ -68,7 +69,7 @@ class Welcome extends Component {
 
                         <div className="box">
                             <Youtube user={this.state.userdata} />
-                            </div>
+                        </div>
                     </div>
                     {/*classmates*/}
                     <div className='column is-half'>
@@ -76,11 +77,14 @@ class Welcome extends Component {
                             <div className='card is-full'>
                             {/* first row of photos */}
                             {this.state.classmates.map(student => {
-                                return <ClassmateCard 
-                                key = {student._id}
-                                {...student} />
+                                return <ClassmateCard
+                                    key={student._id}
+                                    {...student} />
                             })}
                         </div>
+                        <div className = 'card is-full'>
+                        <JobSearch />
+                            </div>
                     </div>
                 </div>
             </div>

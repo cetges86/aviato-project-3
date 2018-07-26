@@ -19,6 +19,7 @@ class App extends Component {
 
     componentDidMount() {
         API.checkAuthenticated().then(res => {
+            console.log(res)
             if (res.data !== "Not Logged In") {
                 this.setState({ loggedIn: true })
                 console.log(this.state.loggedIn)

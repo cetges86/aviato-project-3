@@ -8,13 +8,19 @@ const JobListing = (props) => {
 
     const jobItems = props.jobs.map(job => {
         return (
-           <li>
-               <h4>{props.job.title}</h4>
-               <p>{props.job.location}</p>
-               <p>{props.job.type}</p>
-               <a href={props.jobs.url}>Link to Posting</a>
-               {props.jobs.how_to_apply}
-               </li>
+            <li key={job.id} className="media">
+                <figure className="media-left">
+                    <img id="company-logo" alt="company logo" src={job.company_logo} />
+                </figure>
+                <div className="media-content">
+                    <h4>{job.title}</h4>
+                    <p>{job.location}</p>
+                    <p>{job.type}</p>
+                    <a href={job.company_url}><p>Company Website</p></a>
+                    <a target="_blank" href={job.url}>Link to Posting</a>
+                </div>
+                <hr />
+            </li>
         )
     })
 
@@ -22,7 +28,7 @@ const JobListing = (props) => {
 
     return (
         <ul className="content">
-        {jobItems}
+            {jobItems}
         </ul>
     )
 

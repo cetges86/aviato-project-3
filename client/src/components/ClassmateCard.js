@@ -4,7 +4,7 @@ const ClassmateCard = (props) => {
     return (
 
         <div className="box">
-            <figure className="image is-128x128">
+            <figure className="image">
                 <img alt="profile" src={props.photo} />
             </figure>
             <label className="has-text-centered">{props.name}</label>

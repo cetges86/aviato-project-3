@@ -13,24 +13,27 @@ import "./main.css"
 
 class App extends Component {
 
-    // state = {
-    //     loggedIn: false
-    // }
+    state = {
+        loggedIn: false
+    }
 
-    // componentDidMount() {
-    //     API.checkAuthenticated().then(res => {
-    //         if (res.data !== "Not Logged In")
-    //         this.setState({ loggedIn: true })
-    //         console.log(this.state.loggedIn);
-    //     })
-    // }
+    componentDidMount() {
+        API.checkAuthenticated().then(res => {
+            if (res.data !== "Not Logged In") {
+                this.setState({ loggedIn: true })
+                console.log(this.state.loggedIn)
+            } else if (res.data === undefined) {
+                this.setState({ loggedIn: false })
+            }
+        })
+    }
 
 
     render() {
         return (
             <Router>
                 <div>
-                    <Nav loggedIn = {this.state.loggedIn} />
+                    <Nav loggedIn={this.state.loggedIn} />
                     <Switch>
                         <Route exact path="/" component={Login} />
                         <Route exact path="/logout" component={Logout} />

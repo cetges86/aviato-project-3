@@ -20,6 +20,9 @@ body {
   margin-top: 45%;
   margin-left: -10%; }
 
+#company-logo {
+  max-width: 50px; }
+
 /*! bulma.io v0.7.1 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {

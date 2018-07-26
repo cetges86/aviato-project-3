@@ -15,13 +15,15 @@ export default {
     return axios.post("/api/users/signUp", userData);
   },
   logout: function() {
-    return axios.get("api/users/logout");
+    return axios.get("/api/users/logout");
   },
   checkAuthenticated: function () {
-    return axios.get("api/users/authenticated")
+    return axios.get("/api/users/authenticated")
   },
   getJobs: function(jobTerm) {
-    return axios.get(`https://jobs.github.com/positions.json?description=${jobTerm}`)
+    return axios.get("/api/users/jobs/"+ jobTerm)
+      
+      //`https://jobs.github.com/positions.json?description=${jobTerm}`)
   }
   //   // Gets the book with the given id
   //   getBook: function(id) {

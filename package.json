@@ -8,6 +8,7 @@
     "dev": "concurrently \"nodemon app.js\" \"cd client && yarn start\""
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
     "bulma": "^0.7.1",
     "concurrently": "^3.6.0",

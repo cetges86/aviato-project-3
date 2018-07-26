@@ -2,6 +2,7 @@ const router = require("express").Router();
 const userController = require("../../controller/userController");
 const authController = require("../../controller/authController");
 const passport = require('../../config/passport');
+const axios = require('axios');
 
 // Matches with "/api/users"
 router.route("/")
@@ -12,6 +13,15 @@ router
   .route("/authenticated")
   .get(authController.checkAuthenticated);
 
+router
+  .route("/jobs/:job")
+  .get(function (req, res) {
+    let url = `https://jobs.github.com/positions.json?description=${req.params.job}`
+    
+    axios.get(url)
+    .then(jobs => res.json(jobs.data))
+    .catch(err => console.log(err))
+   })
 router
   .route("/logout")
   .get(
@@ -27,11 +37,11 @@ router
   .put(userController.update)
   .delete(userController.remove);
 
-router  
-  .route("/upload")
-  .post(function(){
-    console.log(":)")
-  })
+// router  
+//   .route("/upload")
+//   .post(function(){
+//     console.log(":)")
+//   })
 
 router
   .route("/signUp")

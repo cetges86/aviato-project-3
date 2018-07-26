@@ -14,9 +14,11 @@ const VideoListItem = ({ video, onVideoSelect }) => {
                 </div>
 
                 <div className="media-body">
-                    <div className="media-heading">{video.snippet.title} </div>
+                    <div className="has-text-weight-semibold">{video.snippet.title} </div>
+                    <div>{video.snippet.description}</div>
                 </div>
             </div>
+            <hr />
         </li>
     );
 };

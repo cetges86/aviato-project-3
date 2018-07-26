@@ -5,18 +5,23 @@ select {
     margin-top:5%;
 }
 
-$card-columns-count:        3 !default;
-$card-columns-gap:          1.25rem !default;
-$card-columns-margin:       $card-spacer-y !default;
+// .profilePhoto{
+//     max-width: 33%;
+// }
 
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: $card-bg;
-    background-clip: border-box;
-    border: $card-border-width solid $card-border-color;
-    @include border-radius($card-border-radius);
-  }
+// $card-columns-count: 3 !default;
+// $card-columns-gap:   1.25rem !default;
+// // $card-columns-margin:     
+// // $card-spacer-y !default;
+
+// .card {
+//     position: relative;
+//     display: flex;
+//     flex-direction: column;
+//     min-width: 0;
+//     word-wrap: break-word;
+//     //background-color: $card-bg;
+//     background-clip: border-box;
+//    // border: $card-border-width solid $card-border-color;
+//    // @include border-radius($card-border-radius);
+//   }

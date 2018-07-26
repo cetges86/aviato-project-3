@@ -19,7 +19,7 @@ class Login extends Component {
             if (this.state.userData === "Not Logged In") {
                 this.props.history.push(`/`)
             } else if (this.state.userData._id === undefined){
-                this.props.history.push(`/user/${this.state.userData._id}`)
+                this.props.history.push(`/`)
             } else {
                 this.props.history.push(`user/${this.state.userData._id}`)
             }

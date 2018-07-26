@@ -11,7 +11,7 @@ const VideoDetail = ({ video }) => {
     return (
         <div className="video-detail">
         <div>
-            <iframe className="embed-responsive-item" src={url}></iframe>
+            <iframe title="youtube player" className="embed-responsive-item" src={url}></iframe>
         </div>
         <div className="detail">
             <div className="has-text-weight-bold">{video.snippet.title}</div>

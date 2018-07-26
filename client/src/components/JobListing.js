@@ -2,6 +2,10 @@ import React from 'react';
 
 const JobListing = (props) => {
 
+    if (!props.jobs) {
+        return <div>Loading...</div>
+    }
+
     const jobItems = props.jobs.map(job => {
         return (
            <li>

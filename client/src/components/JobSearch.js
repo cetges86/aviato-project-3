@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Searchbar from "./Searchbar";
 import API from "../util/API";
+import JobListing from "./JobListing";
 
 
 class JobSearch extends Component {
@@ -12,14 +13,15 @@ class JobSearch extends Component {
     }
 
     componentDidMount = () => {
-        this.jobSearch("full stack web developer", "80015");
+        this.jobSearch("full stack web developer");
     }
 
-    jobSearch = (jobTitle, location) => {
-        if (jobTitle !== "" && location !== "") {
+    jobSearch = (jobTitle) => {
+        if (jobTitle !== "") {
 
-            API.getJobs(jobTitle, location).then(res => {
-                this.setState({jobs: res});            })
+            API.getJobs(jobTitle).then(res => {
+                this.setState({jobs: res});           
+             })
         }
     }
 
@@ -30,11 +32,11 @@ class JobSearch extends Component {
                 <h4 className="is-size-2">Search for Jobs</h4>
                 <Searchbar onSearchTermChange={this.jobSearch} />
                 <p className="has-text-centered">Enter Job Title</p>
-                <Searchbar onSearchTermChange={this.jobSearch} />
-                <p className="has-text-centered">Enter Location (Zip or City Name)</p>
-                <button onClick={this.jobSearch(this.state.jobTerm, this.state.location)} className="button is-primary">Search </button>
+                {/* <Searchbar onSearchTermChange={this.jobSearch} />
+                <p className="has-text-centered">Enter Location (Zip or City Name)</p> */}
+                <button onClick={this.jobSearch(this.state.jobTerm)} className="button is-primary">Search </button>
                 <div className="box">
-                <JobListing />
+                <JobListing jobs={this.state.jobs} />
                 </div>
             </div>
         )

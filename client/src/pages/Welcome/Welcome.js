@@ -29,15 +29,8 @@ class Welcome extends Component {
             // yearbook profile
             <div className='container'>
                 <div className='columns'>
-                    <div id='header' className='column is-full'>
-                        Profile
-                    </div>
-                </div>
-
-                <div className='columns'>
                     {/* profile picture */}
                     <div id='photo' className='column is-one-quarter'>
-                        photo
                         <figure className="image is-128x128">
                             <img alt="user-profile" src={this.state.userdata.photo} />
                         </figure>
@@ -46,6 +39,7 @@ class Welcome extends Component {
                     {/*name and info*/}
                     <div className='column is-half'>
                         <h1 className="is-size-1">{this.state.userdata.name}</h1>
+                        <hr/>
                         <p>Contact:<a href={"mailto:" + this.state.userdata.email}> {this.state.userdata.email}</a></p>
                         <p>Primary Programming Language: {this.state.userdata.lang}</p>
                         <p>Job Desired: {this.state.userdata.job}</p>
@@ -56,6 +50,7 @@ class Welcome extends Component {
                     </div>
                     <div id='photo' className='column is-one-quarter'>
                         career links
+                        <hr />
                         <ul>
                             <li><a href={this.state.userdata.linked}>LinkedIn Profile</a></li>
                             <li><a href={this.state.userdata.github}>Github Profile</a></li>
@@ -66,27 +61,27 @@ class Welcome extends Component {
                 </div>
                 <div className='columns'>
                     {/* career links */}
-                    <div className="column is-half">
+                    <div className="column is-two-thirds">
 
                         <div className="box">
                             <Youtube user={this.state.userdata} />
                         </div>
+                        <div className='card is-full'>
+                            <JobSearch />
+                        </div>
                     </div>
                     {/*classmates*/}
-                    <div className='column is-half'>
+                    <div className='column is-one-third'>
                         classmates
-                            <div className='card is-full'>
-                            <div className="columns">
+                        <div className="box">
                                 {/* first row of photos */}
-                                {this.state.classmates.map(student => {
+                                {this.state.classmates
+                                .filter(student => student.name !== this.state.userdata.name)
+                                .map(student => {
                                     return <ClassmateCard
                                         key={student._id}
                                         {...student} />
                                 })}
-                            </div>
-                        </div>
-                        <div className='card is-full'>
-                            <JobSearch />
                         </div>
                     </div>
                 </div>

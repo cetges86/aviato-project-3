@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
+.navbar {
+  -webkit-box-shadow: 0 8px 6px -6px #999;
+  -moz-box-shadow: 0 8px 6px -6px #999;
+  box-shadow: 0 8px 6px -6px #999;
+  opacity: .9; }
+
 body {
   font-family: "Josefin Sans" !important; }
 

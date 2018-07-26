@@ -16,6 +16,8 @@ class Searchbar extends Component {
         return (
             <div className="search-bar">
                 <input 
+                placeholder="e.g. developer jobs..."
+                className="input is-rounded is-primary"
                 value = {this.state.term}
                 onChange={event => this.onInputChange(event.target.value)} 
                 />

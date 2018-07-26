@@ -16,29 +16,34 @@ class Yearbook extends Component {
     componentDidMount() {
         API.getAllUsers().then(res => {
             console.log(res)
-            this.setState({users: res.data}) 
+            this.setState({ users: res.data })
         })
-        .catch(err => console.log(err))
+            .catch(err => console.log(err))
     }
     render() {
-        return(
-            <div>
-            {this.state.users.map(user => {
-        return <YearbookCard
-                key = {user._id}
-            // name={this.state.name}
-            // email={this.state.email}
-            // lang={this.state.lang}
-            // job={this.state.job}
-            // photo={this.state.photo}
-            {...user} /> })}
+        return (
+        <div className = "container">
+                <div className="columns">
+                        {this.state.users.map(user => {
+                            return <YearbookCard
+                                key={user._id}
+                                // name={this.state.name}
+                                // email={this.state.email}
+                                // lang={this.state.lang}
+                                // job={this.state.job}
+                                // photo={this.state.photo}
+                                {...user} />
+                        })}
+                    
+                </div>
             </div>
-    )}
+    )
+    }
 
-    
- 
 
-   
+
+
+
 };
 
 

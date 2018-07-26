@@ -19,6 +19,9 @@ export default {
   },
   checkAuthenticated: function () {
     return axios.get("api/users/authenticated")
+  },
+  getJobs: function(jobTerm) {
+    return axios.get(`https://jobs.github.com/positions.json?description=${jobTerm}`)
   }
   //   // Gets the book with the given id
   //   getBook: function(id) {

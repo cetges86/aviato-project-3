@@ -3,6 +3,7 @@ import YTsearch from 'youtube-api-search';
 import Searchbar from "./Searchbar";
 import VideoList from "./VideoList";
 import VideoDetail from "./VideoDetail";
+import YTlogo from "../img/youtube.png";
 import _ from "lodash";
 
 const API_KEY = "AIzaSyB-xKZip_08qHzFG4dRG1Hbwo0byxZ3t2Q"
@@ -30,9 +31,23 @@ class Youtube extends Component {
         const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 600);
 
         return (<div>
-            <h3 className="has-text-centered">Youtube Search</h3>
+            <div className="media">
+                <div className="media-left">
+                    <img className="youtube-logo" alt="youtube logo" src={YTlogo} />
+                </div>
+                <div className="media-right">
+                    <p id="search" className="is-size-4">Search</p>
+            </div>
+            </div>
             <Searchbar onSearchTermChange={videoSearch} />
-            <VideoDetail video={this.state.selectedVideo} />
+            <br />
+            <div className="box">
+                <div className="columns">
+                    <div className="column is-10 is-offset-1">
+                        <VideoDetail video={this.state.selectedVideo} />
+                    </div>
+                </div>
+            </div>
             <br />
             <VideoList
                 onVideoSelect={selectedVideo => this.setState({ selectedVideo })}

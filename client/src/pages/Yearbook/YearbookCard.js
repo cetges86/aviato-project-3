@@ -17,6 +17,9 @@ class YearbookCard extends Component {
                 <div className="media-content">
                   <p className="title is-4">{this.props.name}</p>
                   <p className="subtitle is-6"><a href={"mailto:" +this.props.email}>Email</a></p>
+                  <p className="subtitle is-6"><a href={this.props.linked}>LinkedIn</a></p>
+                  <p className="subtitle is-6"><a href={this.props.github}>GitHub</a></p>
+                  <p className="subtitle is-6"><a href={this.props.portfolio}>Portfolio</a></p>
                   <p className="subtitle is-6">{this.props.lang}</p>
                   <p className="subtitle is-6">{
                             (this.props.looking)

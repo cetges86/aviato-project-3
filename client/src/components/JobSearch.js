@@ -21,9 +21,8 @@ class JobSearch extends Component {
         if (jobTitle !== "") {
 
             API.getJobs(jobTitle).then(res => {
-                this.setState({jobs: res.data});
-                console.log(this.state.jobs) 
-             })
+                this.setState({ jobs: res.data });
+            })
         }
     }
 
@@ -40,7 +39,7 @@ class JobSearch extends Component {
                 {/* <Searchbar onSearchTermChange={this.jobSearch} />
                 <p className="has-text-centered">Enter Location (Zip or City Name)</p> */}
                 <div className="box">
-                <JobListing jobs={this.state.jobs} />
+                    <JobListing jobs={this.state.jobs} />
                 </div>
             </div>
         )

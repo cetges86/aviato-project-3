@@ -74,7 +74,6 @@ class Login extends Component {
                             <div className="field is-grouped">
                                 <input className="button is-rounded is-primary" type="submit" value="Login"
                                     onClick={this.onSubmit} />
-                                {/* <a href="/signup"> <input className="button is-rounded" value="Sign Up" /> </a> */}
                             </div>
                         </div>
                     </div>

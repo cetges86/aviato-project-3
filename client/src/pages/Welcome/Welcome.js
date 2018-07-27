@@ -67,7 +67,7 @@ class Welcome extends Component {
                             <Youtube user={this.state.userdata} />
                         </div>
                         <div className='card is-full'>
-                            <JobSearch />
+                            <JobSearch job={this.state.userdata.job} />
                         </div>
                     </div>
                     {/*classmates*/}

@@ -7,7 +7,7 @@ class YearbookCard extends Component {
         <div className= "column is-4">
           <div className="card">
             <div className="card-image">
-              <figure className="image is-4by3">
+              <figure className="image is-4by5">
                 <img className="profilePhoto" src={this.props.photo} alt="user profile" />
               </figure>
             </div>

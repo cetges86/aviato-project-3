@@ -36,7 +36,7 @@ app.use(function (err, req, res, next) {
 
 
 //configure session
-app.use(session({ secret: 'team aviato', cookie: { maxAge: 600000 }, resave: true, saveUninitialized: true }));
+app.use(session({ secret: 'team aviato', cookie: { maxAge: 1000 }, resave: false, saveUninitialized: false }));
 app.use(flash());
 
 //initialize passport
@@ -47,9 +47,6 @@ app.use(passport.session());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client', 'build')));
-  // app.get("*", (req, res) => {
-  //   res.sendFile(path.join(__dirname + "/client/build/index.html"));
-  // });
 }
 
 app.use(routes);

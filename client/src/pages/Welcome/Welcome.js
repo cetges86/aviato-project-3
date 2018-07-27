@@ -72,7 +72,10 @@ class Welcome extends Component {
                     </div>
                     {/*classmates*/}
                     <div className='column is-one-third'>
-                        classmates
+                        <p className="has-text-left">classmates</p>
+                        <hr />
+                        <a href="/yearbook"><p className="has-text-left">View Yearbook</p></a>
+
                         <div className="box">
                                 {/* first row of photos */}
                                 {this.state.classmates

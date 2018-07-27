@@ -36,7 +36,7 @@ app.use(function (err, req, res, next) {
 
 
 //configure session
-app.use(session({ secret: 'team aviato', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
+app.use(session({ secret: 'team aviato', cookie: { maxAge: 300000 }, resave: false, saveUninitialized: false }));
 app.use(flash());
 
 //initialize passport

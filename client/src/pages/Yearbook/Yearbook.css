@@ -3,3 +3,6 @@ select {
 
 .button.is-primary {
   margin-top: 5%; }
+
+#yearbook-card {
+  flex-wrap: wrap; }
